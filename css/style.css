@@ -717,6 +717,9 @@ form .send-btn:hover{
     .main-content p{
         width: 100%;
     }
+    .hero-img {
+        display: none;
+    }
 }
 
 @media (max-width: 470px){
@@ -732,6 +735,9 @@ form .send-btn:hover{
         border-radius: 50%;
         object-fit: cover;
         margin: 0 auto;
+    }
+    .hero-img {
+        display: none;
     }
 }
 
