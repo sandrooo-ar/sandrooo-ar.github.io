@@ -8,6 +8,14 @@
     scroll-behavior: smooth;
 }
 
+@font-face {
+  font-family: 'Neue Haas Grotesk';
+  src: url('fonts/neue-haas-grotesk.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Shows a fallback font until NHG loads */
+}
+
 :root{
     --text-color: #fff;
     --bg-color: #1b1f24;
@@ -59,7 +67,7 @@ span{
     font-size: var(--p-font);
     font-weight: 500;
     color: var(--other-color);
-    margin-left: 40px;
+    margin-right: 40px;
     transition: all .50s ease;
 }
 
@@ -95,6 +103,7 @@ span{
     transform: scale(1.1);
 }
 
+
 section{
     padding: 110px 16% 90px;
 }
@@ -107,6 +116,16 @@ section{
     justify-content: flex-start;
     position: relative; 
     overflow: hidden;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This pushes text left and buttons right */
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    gap: 2rem;
 }
 
 .hero-video {
@@ -126,6 +145,39 @@ section{
     z-index: 5;        /* Makes sure text stays on top of the image */
 }
 
+/* Update these specific properties in your style.css */
+
+.btns {
+    display: flex;
+    flex-direction: row; /* Changed from column to row */
+    gap: 20px;           /* Space between the buttons */
+    align-items: center; 
+    justify-content: flex-start; /* Aligns them to the left under the text */
+    margin-top: 25px;    /* Adds some breathing room below the paragraph */
+}
+
+.btn {
+    display: inline-block;
+    width: auto;         /* Changed from 280px to auto for better fit */
+    padding: 15px 30px;  /* Added horizontal padding since width is now auto */
+    text-align: center;
+    background: var(--main-color);
+    color: var(--bg-color);
+    border: 2px solid var(--main-color);
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all .50s ease;
+}
+.main-btn {
+    position: relative;
+    z-index: 5;
+}
+
+.btns .game {
+    background-color: #4acc6d;
+    border: 2px solid #4acc6d;
+}
 
 .hero::before {
     content: "";
@@ -137,10 +189,10 @@ section{
 
 
 .main-content {
-    position: relative;
-    z-index: 2;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* Adds a "glow" behind text for readability */
+    flex: 1; 
+    max-width: 600px;
 }
+
 
 .main-content h4{
     font-size: 1.6rem;
@@ -148,13 +200,13 @@ section{
 
 .main-content h1{
     font-size: var(--h1-font);
-    font-weight: 900;
+    font-weight: 700;
     margin: 20px 0px 20px;
-    line-height: 1.2;
+    line-height: 1;
 }
 
 .main-content p{
-    font-size: var(--p-font);
+    font-size: 1.2rem;
     font-weight: 400;
     width: 620px;
     max-width: 100%;
@@ -188,16 +240,49 @@ section{
     box-shadow: 0 0 20px var(--main-color);
 }
 
-.btn{
-    display: inline-block;
-    padding: 11px 26px;
-    background: var(--main-color);
-    color: var(--bg-color);
-    border: 2px solid var(--main-color);
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    transition: all .50s ease;
+/* This targets the container holding the image */
+.hero-img {
+    flex: 1;             /* Tells this div to take up the remaining space */
+    display: flex;       /* Allows us to center the <img> inside this div */
+    
+    justify-content: center; 
+    align-items: center;
+    z-index: 3;
+}
+
+/* This targets the actual image file */
+.hero-img img {
+    max-width: 110%;     /* Ensures it doesn't overflow the container */
+    margin-right: 250px;
+    margin-top: 100px;
+    height: auto;
+    max-height: 1200px;   /* Prevents the image from being too tall */
+    /* Optional: add a slight tilt for a more 'dynamic' game dev look */
+    transform: perspective(1000px) rotateY(-10deg); 
+
+    filter: 
+    brightness(1.05) 
+    contrast(1.1) 
+    saturate(1.5) 
+    /* Increased hue-rotate to push colors further into the blues/cyans */
+    hue-rotate(180deg) 
+    /* Added opacity for transparency */
+    opacity(0.8)
+    /* Boosted the shadow for a deeper blue glow */
+    drop-shadow(0 0 8px rgba(0, 100, 255, 0.9));
+}
+
+.hero-img::before {
+  content: " ";
+  position: absolute;
+  inset: 0;
+  /* Scanlines + Grain */
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 3px, 3px 100%;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .btn:hover{
@@ -205,6 +290,13 @@ section{
     background: transparent;
     color: var(--main-color);
     box-shadow: 0 0 20px var(--main-color);
+}
+
+.game:hover{
+    
+    background: transparent;
+    color: #4acc6d;
+    box-shadow: 0 0 20px #4acc6d;
 }
 
 .btn2{
@@ -580,6 +672,18 @@ form .send-btn:hover{
     .social{
         margin-bottom: 20px;
     }
+
+    .hero-container {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    
+    .btns {
+        align-items: flex-start; /* Align left on mobile for better flow */
+        margin-top: 20px;
+    }
+
     #menu-icon{
         display: block;
     }
