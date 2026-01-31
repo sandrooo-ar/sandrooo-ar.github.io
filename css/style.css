@@ -121,7 +121,7 @@ section{
 .hero-container {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* This pushes text left and buttons right */
+    justify-content: center; /* Center-aligned for better balance */
     width: 100%;
     position: relative;
     z-index: 5;
@@ -673,6 +673,9 @@ form .send-btn:hover{
         margin-bottom: 20px;
     }
 
+    .hero-img {
+        display: none;
+    }
     .hero-container {
         flex-direction: column;
         align-items: flex-start;
