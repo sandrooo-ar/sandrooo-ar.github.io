@@ -76,6 +76,40 @@ span{
     text-shadow: 3px 3px 20px var(--main-color), -2px 1px 30px var(--text-color);
 }
 
+/* Selector de Idiomas */
+.language-selector {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: right;
+    right: 25%;
+    gap: 8px;
+}
+
+.lang-btn {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--other-color);
+    transition: all .50s ease;
+    letter-spacing: 1px;
+}
+
+.lang-btn:hover {
+    color: var(--main-color);
+    text-shadow: 0 0 10px var(--main-color);
+}
+
+.lang-btn.active {
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+}
+
+.lang-separator {
+    color: var(--other-color);
+    opacity: 0.3;
+    font-size: 14px;
+}
+
 #menu-icon{
     font-size: 35px;
     z-index: 10001;
@@ -379,6 +413,9 @@ header.sticky{
     padding: 80px 40px 66px;
     background: #2d343f;
     border-radius: 28px;
+    /* Add These Lines */
+    width: 380px;           /* Sets a fixed width */
+    height: 580px;          /* Sets a fixed height */
     border: 1px solid transparent;
     box-shadow: 0 0 5px var(--main-color);
     transition: all .50s ease;
